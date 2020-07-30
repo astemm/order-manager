@@ -36,6 +36,13 @@ public class ItemService {
     }
 	
 	@Transactional
+    public void deleteItem(Long id) throws NoSuchItemException {  
+		Item item = itemRepo.findById(id).get();
+        if (item == null) throw new NoSuchItemException();
+        itemRepo.delete(item);
+    }
+	
+	@Transactional
     public Item FindSuchItemByNameAndPrice(Item item) {
 		Item item2=null;
 		for(Item it:itemRepo.findAll()) {
