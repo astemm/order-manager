@@ -39,15 +39,12 @@ public class OrderController {
 	 
 	 @PostMapping(value="/orders")
      public ResponseEntity<Order> addOrder(@RequestBody Order order) throws NoSuchItemException {
-		    // Item item=order.getItem();
 			 Order newOrder=orderService.createOrder(order);
-			// Set<Order> orders=item.getOrders();
-			// orders.add(newOrder);
-			// item.setOrders(orders);
 			 return new ResponseEntity<>(newOrder, HttpStatus.CREATED);
      }
 	 
-	 @PostMapping(value="/orders2")
+	 //Main rest method that create order and then remove it from storage after 10 minutes in async method
+	 @PostMapping(value="/orders/temp")
      public ResponseEntity<Order> addOrderAndDelete(@RequestBody Order order) throws NoSuchOrderException,InterruptedException, NoSuchItemException {
 			 Order newOrder=orderService.createOrder(order);
 			 orderService.deleteOrderAsync(newOrder.getId());

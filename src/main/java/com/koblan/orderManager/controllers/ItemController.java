@@ -33,7 +33,7 @@ public class ItemController {
 	 public ResponseEntity<?> getItemWithMinimalPrice(@PathVariable ItemName itemName) throws NoSuchItemException {
 	        List<Item> itemList = itemService.getAllItems();
 	        if(itemList.size()<6) return new ResponseEntity<>(itemList, HttpStatus.OK);
-	        else {Item minItem =itemList.stream().filter(e->e.getName()==itemName).min((x1,x2)->new Double(x1.getPrice()).compareTo(new Double(x2.getPrice()))).get();
+	        else {Item minItem =itemList.stream().filter(e->e.getName()==itemName).min((x1,x2)->new Double(x1.getItemPrice()).compareTo(new Double(x2.getItemPrice()))).get();
 	        return new ResponseEntity<>(minItem,HttpStatus.OK);
 	        }
 	 }

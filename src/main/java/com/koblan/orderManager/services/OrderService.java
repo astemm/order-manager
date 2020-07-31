@@ -48,7 +48,6 @@ public class OrderService {
 			 else order.setItem(item1);
 			 ;}; //Assigning new item to Order with generated id
 		 Item item=order.getItem();
-		 //Order newOrder=orderService.createOrder(order);
 		 Set<Order> orders=item.getOrders();
 		 orders.add(order);
 		 item.setOrders(orders);
@@ -74,6 +73,7 @@ public class OrderService {
     }
 	
 	@Async
+	@Transactional
 	public void deleteOrderAsync(Long id) throws NoSuchOrderException,InterruptedException {
 		     long start=System.currentTimeMillis();
 	         new Timer().schedule(new TimerTask() {public void run() {
@@ -83,9 +83,9 @@ public class OrderService {
 			 System.out.println(System.currentTimeMillis()-start);
 			 }
 			 catch (Exception ex) {}
-			 }},180000);
+			 }},600000);// Run Timertask After 10 minutes - 600 seconds
 	         
-	 /* Alternative waiting
+	 /* Alternative waiting of 10 minutes to delete order 
 		long start=System.currentTimeMillis();
 		Thread.sleep(180000);
 		System.out.println(System.currentTimeMillis()-start);

@@ -28,8 +28,6 @@ public class OrderManagerApplication {
 		itemRepo.save(new Item(ItemName.NOTEBOOK,6500.0));
 		itemRepo.save(new Item(ItemName.TABLET,2300.0));
 		itemRepo.save(new Item(ItemName.SMARTPHONE,3300.0));
-		//itemRepo.save(new Item(ItemName.SMARTPHONE,4100.0));
-		//itemRepo.save(new Item(ItemName.NOTEBOOK,7100.0));
 	}
 	
 	public static void main(String[] args) {

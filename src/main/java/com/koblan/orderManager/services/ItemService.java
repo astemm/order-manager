@@ -29,9 +29,7 @@ public class ItemService {
     }
 	
 	@Transactional
-    public Item createItem(Item item) {  //throws SuchItemExistsException {
-	//	if (itemRepo.existsByName(item.getName()) && itemRepo.existsByItemPrice(item.getPrice()))
-	//			throw new SuchItemExistsException();
+    public Item createItem(Item item) { 
         return itemRepo.save(item);
     }
 	
@@ -46,7 +44,7 @@ public class ItemService {
     public Item FindSuchItemByNameAndPrice(Item item) {
 		Item item2=null;
 		for(Item it:itemRepo.findAll()) {
-			if (item.getName()==it.getName() && item.getPrice()==it.getPrice())
+			if (item.getName()==it.getName() && item.getItemPrice()==it.getItemPrice())
 				{item2=it; break;}
 		}
         return item2;

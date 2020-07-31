@@ -50,7 +50,7 @@ public class Item {
 		this.itemPrice = itemPrice;
 	  }
 
-	  public double getPrice() {
+	  public double getItemPrice() {
 			return itemPrice;
 	  }
 	  

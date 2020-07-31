@@ -24,10 +24,9 @@ public class Order {
 
   public Order() {}
 
-  //double price,
   public Order(int quantity, Item item) {
     //this.price=price;
-	this.price =item.getPrice()*quantity;
+	this.price =item.getItemPrice()*quantity;
     this.quantity=quantity;
     this.item = item;
   }
@@ -45,7 +44,7 @@ public class Order {
 	  }
   
   public void setPrice() {
-	this.price =item.getPrice()*quantity;
+	this.price =item.getItemPrice()*quantity;
   }
 
   public int getQuantity() {
