@@ -65,7 +65,7 @@ public class ItemControllerTest {
 	   //@Ignore
 	   @Test
 	   public void getItemWithMinimalPrice() throws Exception {
-	      MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items/NOTEBOOK").contentType(MediaType.APPLICATION_JSON_VALUE)
+	      MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items/minprice/NOTEBOOK").contentType(MediaType.APPLICATION_JSON_VALUE)
 	    		  .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 		  int status = mvcResult.getResponse().getStatus();
 		  assertEquals(200, status);
@@ -73,7 +73,7 @@ public class ItemControllerTest {
 	      Item minItem = mapFromJson(content, Item.class);
 	      assertTrue("The minimal price of NOTEBOOKS are 3100.5",minItem.getItemPrice() == 3100.5);
 	      
-	      mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items/TABLET").contentType(MediaType.APPLICATION_JSON_VALUE)
+	      mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items/minprice/TABLET").contentType(MediaType.APPLICATION_JSON_VALUE)
 	    		  .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 		  status = mvcResult.getResponse().getStatus();
 		  assertEquals(200, status);
@@ -88,7 +88,7 @@ public class ItemControllerTest {
 		  this.mockMvc.perform(MockMvcRequestBuilders.delete("/items/7")).andReturn();
 		  this.mockMvc.perform(MockMvcRequestBuilders.delete("/items/8")).andReturn();
 		  
-		  MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items/NOTEBOOK").contentType(MediaType.APPLICATION_JSON_VALUE)
+		  MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items/minprice/NOTEBOOK").contentType(MediaType.APPLICATION_JSON_VALUE)
 	    		  .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 		  int status = mvcResult.getResponse().getStatus();
 		  assertEquals(200, status);

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.koblan.orderManager.exceptions.NoSuchItemException;
 import com.koblan.orderManager.exceptions.NoSuchOrderException;
@@ -19,6 +20,7 @@ import com.koblan.orderManager.models.Order;
 import com.koblan.orderManager.services.OrderService;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class OrderController {
 	
 	 @Autowired
