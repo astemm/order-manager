@@ -21,6 +21,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.security.test.context.support.WithMockUser;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -66,6 +67,7 @@ public class OrderControllerTest {
 	          return objectMapper.readValue(json, clazz);
 	  }
 	   
+	   @WithMockUser()
 	   @Test
 	   public void createOrderandDelete() throws Exception {
 		   Item item=itemRepo.findById(1L);
@@ -83,6 +85,7 @@ public class OrderControllerTest {
 	   }
 	   
 	   //@Ignore
+	   @WithMockUser()
 	   @Test
 	   public void createOrder() throws Exception {
 		   Item item1=itemRepo.findById(2L);
@@ -108,6 +111,7 @@ public class OrderControllerTest {
 	   }
 	   
 	   //@Ignore
+	   @WithMockUser()
 	   @Test
 	   public void getOrderList() throws Exception {
 	      MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/orders").contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -122,6 +126,7 @@ public class OrderControllerTest {
 	   }
 	   
 	   //@Ignore
+	   @WithMockUser()
 	   @Test
 	   public void removeOrder() throws Exception {
 	      MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.delete("/orders/1")).andReturn();

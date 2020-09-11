@@ -17,6 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.security.test.context.support.WithMockUser;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -51,6 +52,7 @@ public class ItemControllerTest {
 	  }
 	  
 	   //@Ignore
+	   @WithMockUser()
 	   @Test
 	   public void getItemList() throws Exception {
 	      MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items").contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -63,6 +65,7 @@ public class ItemControllerTest {
 	   }
 	   
 	   //@Ignore
+	   @WithMockUser()
 	   @Test
 	   public void getItemWithMinimalPrice() throws Exception {
 	      MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/items/minprice/NOTEBOOK").contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -82,6 +85,7 @@ public class ItemControllerTest {
 	      assertTrue("The minimal price of TABLETS are 2300",minItem.getItemPrice() == 2300);
 	   }
 	   
+	   @WithMockUser()
 	   @Test
 	   public void CheckItemWithMinimalPriceWhenItReturnsListOfItems() throws Exception {
 		  this.mockMvc.perform(MockMvcRequestBuilders.delete("/items/6")).andReturn();
