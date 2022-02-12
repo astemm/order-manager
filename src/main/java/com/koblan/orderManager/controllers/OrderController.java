@@ -32,7 +32,6 @@ public class OrderController {
 	        return new ResponseEntity<>(orderList, HttpStatus.OK);
 	 }
 	 
-
 	 @GetMapping(value = "/orders/{id}")
 	 public ResponseEntity<Order> getOrder(@PathVariable Long id) throws NoSuchOrderException {
 	        Order order=orderService.getOrder(id);

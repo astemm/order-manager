@@ -56,7 +56,49 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+           <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>build reactjs</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>npm</executable>
+                    <arguments>
+                        <argument>run</argument>
+                        <argument>build</argument>
+                    </arguments>
+                    <workingDirectory>${basedir}/src/main/orders-app-reactjs</workingDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-resources-plugin</artifactId>
+               <executions>
+                  <execution>
+                      <id>Copy frontend build to target</id>
+                      <phase>compile</phase>
+                      <goals>
+                          <goal>copy-resources</goal>
+                      </goals>
+                      <configuration>
+                       <outputDirectory>${basedir}/target/classes/public</outputDirectory>
+                        <resources>
+                         <resource>
+                          <directory>${basedir}/src/main/orders-app-reactjs/build</directory>
+                          <filtering>false</filtering>
+                         </resource>
+                        </resources>
+                       </configuration>
+                </execution>
+               </executions>
+           </plugin>
 		</plugins>
 	</build>
-
 </project>

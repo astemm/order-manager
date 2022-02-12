@@ -116,7 +116,7 @@ public class UserController {
                //roles.add(role);};
                //user.setRoles(roles); }
 
-	        user.setRoles(roles);    
+	        user.setRoles(roles);   
 	        userRepository.save(user);
 	        //return ResponseEntity.ok().body("User registered successfully!");
 	        return new ResponseEntity<>(new Message("User registered successfully!"), HttpStatus.OK);

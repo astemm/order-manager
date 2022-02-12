@@ -25,6 +25,7 @@ public class OrderManagerApplication {
 
 	@PostConstruct
 	public void loadData() {
+                if (itemRepo.count()==0) {
 		itemRepo.save(new Item(ItemName.NOTEBOOK,3100.5));
 		itemRepo.save(new Item(ItemName.NOTEBOOK,5400.0));
 		itemRepo.save(new Item(ItemName.TABLET,4500.0));
@@ -33,8 +34,12 @@ public class OrderManagerApplication {
 		itemRepo.save(new Item(ItemName.NOTEBOOK,6500.0));
 		itemRepo.save(new Item(ItemName.TABLET,2300.0));
 		itemRepo.save(new Item(ItemName.SMARTPHONE,3300.0));
+                }
+
+                if (roleRepo.count()==0) {
                 roleRepo.save(new Role("ROLE_ADMIN"));
                 roleRepo.save(new Role("ROLE_GUEST"));
+                }
 	}
 	
 	public static void main(String[] args) {
